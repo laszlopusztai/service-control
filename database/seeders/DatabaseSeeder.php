@@ -52,12 +52,28 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        $tags = Tag::all();
+
         foreach (Car::all() as $car) {
 
             ServiceSheet::factory()
                 ->count(2)
                 ->for($car)
                 ->create();
+
+            [$tag1, $tag2] = $tags->random(2);
+
+            $car->tags()->save($tag1);
+            $car->tags()->save($tag2);
+        }
+
+        foreach (ServiceSheet::all() as $sheet) {
+
+            [$tag1, $tag2, $tag3] = $tags->random(3);
+
+            $sheet->tags()->save($tag1);
+            $sheet->tags()->save($tag2);
+            $sheet->tags()->save($tag3);
         }
     }
 }
