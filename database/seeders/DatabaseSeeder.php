@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Car;
 use App\Models\User;
 use App\Models\CarType;
+use App\Models\ServiceSheet;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -49,6 +50,14 @@ class DatabaseSeeder extends Seeder
                 'type_id' => $typeId,
                 'user_id' => $user2->id,
             ]);
+        }
+
+        foreach (Car::all() as $car) {
+
+            ServiceSheet::factory()
+                ->count(2)
+                ->for($car)
+                ->create();
         }
     }
 }
