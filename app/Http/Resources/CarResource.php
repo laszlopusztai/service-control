@@ -20,7 +20,7 @@ class CarResource extends JsonResource
             'id' => $this->id,
             'plate_number' => $this->plate_number,
             'type' => $this->carType->type,
-//            'service_sheets' => ServiceSheetResource::collection($this->serviceSheets),
+            'service_sheets' => ServiceSheetResource::collection($this->serviceSheets),
             'tags' => TagRecource::collection($this->tags),
             'created_at' => Carbon::parse($this->created_at)->diffForHumans()
         ];

@@ -48,4 +48,15 @@ class CarsController extends Controller
 
         return to_route('cars.index');
     }
+
+    /**
+     * @param Car $car
+     * @return Response|ResponseFactory
+     */
+    public function show(Car $car) : Response|ResponseFactory
+    {
+        return inertia('Cars/Show', [
+            'car' => new CarResource($car)
+        ]);
+    }
 }

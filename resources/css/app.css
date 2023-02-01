@@ -17,3 +17,7 @@ h3 {
 .field {
     @apply sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5;
 }
+
+.tag {
+    @apply mx-1 px-6 py-1 border border-gray-500 rounded-xl bg-gray-500 text-white text-xs;
+}
