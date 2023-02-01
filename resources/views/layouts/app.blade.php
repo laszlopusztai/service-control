@@ -17,7 +17,9 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
-            @inertia
+            <div class="max-w-2xl mx-8 md:mx-auto mt-10">
+                @inertia
+            </div>
 
             <!-- Page Heading -->
 {{--            @if (isset($header))--}}

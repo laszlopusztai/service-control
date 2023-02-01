@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Inertia\Response;
 use Inertia\ResponseFactory;
+use App\Http\Resources\CarResource;
 
 class CarsController extends Controller
 {
@@ -12,6 +14,10 @@ class CarsController extends Controller
      */
     public function index() : \Inertia\Response|\Inertia\ResponseFactory
     {
-        return inertia('Car/Index');
+        $cars = CarResource::collection(Car::all());
+
+        return inertia('Cars/Index', [
+            'cars' => $cars
+        ]);
     }
 }
