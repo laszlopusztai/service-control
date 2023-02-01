@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\User;
 use Inertia\Response;
 use App\Models\CarType;
+use App\Mail\CarDeleted;
 use Inertia\ResponseFactory;
 use Illuminate\Http\Request;
 use App\Http\Resources\CarResource;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 
 class CarsController extends Controller
@@ -58,5 +61,18 @@ class CarsController extends Controller
         return inertia('Cars/Show', [
             'car' => new CarResource($car)
         ]);
+    }
+
+    /**
+     * @param Car $car
+     * @return RedirectResponse
+     */
+    public function destroy(Car $car) : RedirectResponse
+    {
+        $car->delete();
+
+        Mail::to(auth()->user())->queue(new CarDeleted());
+
+        return to_route('cars.index');
     }
 }
