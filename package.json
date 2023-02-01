@@ -14,5 +14,10 @@
         "postcss": "^8.4.21",
         "tailwindcss": "^3.2.4",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@inertiajs/vue3": "^1.0.0",
+        "@vitejs/plugin-vue": "^4.0.0",
+        "vue": "^3.2.45"
     }
 }
